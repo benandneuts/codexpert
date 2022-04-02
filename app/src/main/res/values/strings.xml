@@ -3,4 +3,11 @@
     <string name="share">Partager mon score</string>
     <string name="details">Détails de mes réponses</string>
     <string name="suivant">Suivant</string>
+    <string name="first_star">First_Star</string>
+    <string name="second_star">Second Star</string>
+    <string name="third_star">Third star</string>
+    <string name="reussit">Tu conduis déjà ?</string>
+    <string name="presque">Tu vas bientôt y arriver !</string>
+    <string name="encore_effort">Avec un peu d\'effort tu vas réussir</string>
+    <string name="finito">NE VA PAS SUR LA ROUTE !</string>
 </resources>
