@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class QuestionFragment extends Fragment {
@@ -53,23 +54,41 @@ public class QuestionFragment extends Fragment {
             quest.setText(questions.get(0));
 
             ((LinearLayout)view.findViewById(R.id.layoutQuest)).addView(quest);
-
-            for(int i = 0; i<reponses.size(); i++) {
-                CheckBox cb = new CheckBox(getContext());
-                int finalI = i;
-                cb.setOnClickListener(new View.OnClickListener() {
+            if(reponses.size() <= 2){
+                RadioGroup rg = new RadioGroup(getContext());
+                for(int i = 0; i<reponses.size(); i++) {
+                    RadioButton rb = new RadioButton(getContext());
+                    int finalI = i;
+                    rb.append(reponses.get(i));
+                    rg.addView(rb);
+                }
+                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
-                    public void onClick(View view) {
-                        if(cb.isChecked()){
-                            picked.add(finalI);
-                        }
-                        else{
-                            picked.remove(Integer.valueOf(finalI));
-                        }
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        picked.remove(Integer.valueOf(0));
+                        picked.remove(Integer.valueOf(1));
+                        picked.add(i);
                     }
                 });
-                cb.append(reponses.get(i));
-                ((LinearLayout)view.findViewById(R.id.layoutQuest)).addView(cb);
+            }
+            else {
+                for(int i = 0; i<reponses.size(); i++) {
+                    CheckBox cb = new CheckBox(getContext());
+                    int finalI = i;
+                    cb.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(cb.isChecked()){
+                                picked.add(finalI);
+                            }
+                            else{
+                                picked.remove(Integer.valueOf(finalI));
+                            }
+                        }
+                    });
+                    cb.append(reponses.get(i));
+                    ((LinearLayout)view.findViewById(R.id.layoutQuest)).addView(cb);
+                }
             }
         }
         else if(questions.size() == 2){
@@ -97,6 +116,14 @@ public class QuestionFragment extends Fragment {
                     });
                     rg.addView(rb);
                 }
+                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        picked.remove(Integer.valueOf(i));
+                        picked.remove(Integer.valueOf(i+1));
+                        picked.add(i);
+                    }
+                });
                 ((LinearLayout)view.findViewById(R.id.layoutQuest)).addView(rg);
             }
         }
