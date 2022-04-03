@@ -26,18 +26,18 @@ android:layout_height="match_parent">
             android:id="@+id/frame_layout_detail"
             android:layout_height="match_parent"
             android:layout_width="0px"
-            android:layout_weight="1" />
+            android:layout_weight=".8" />
     </LinearLayout>
     <Button
-    android:id="@+id/suivant"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="right"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="2dp"
-    android:background="#B9E592"
-    android:text="Suivant"
-    android:textSize="11dp"
-    />
+        android:id="@+id/suivant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="2dp"
+        android:background="#B9E592"
+        android:text="Suivant"
+        android:textSize="11dp"
+        />
 
 </LinearLayout>

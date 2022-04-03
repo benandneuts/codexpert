@@ -1,4 +1,5 @@
 <resources>
+    <string name="questions">questions</string>
     <string name="app_name">codexpert</string>
     <string name="share">Partager mon score</string>
     <string name="details">Détails de mes réponses</string>

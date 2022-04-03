@@ -6,22 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/design_default_color_secondary_variant"
-    tools:context="com.codexpert.ImageFragment">
+    tools:context="com.codexpert.Questions">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
+        android:gravity="center"
         android:orientation="vertical"
-        android:background="#1537DF">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+        android:background="#FF9800"
+        android:layout_margin="20px"
+        >
     </LinearLayout>
 </FrameLayout>
 

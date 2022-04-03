@@ -6,10 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <ProgressBar
         android:id="@+id/chargebar"
+        android:max="100"
+        android:progress="100"
         android:layout_width="match_parent"
         android:layout_height="10px"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         />
     <FrameLayout
         android:id="@+id/frame_layout_main"
@@ -19,9 +22,10 @@
         android:background="#FF0000"
         />
     <FrameLayout
+        android:id="@+id/frame_layout_detail"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0.9"
         />
     <Button
         android:id="@+id/suivant"
