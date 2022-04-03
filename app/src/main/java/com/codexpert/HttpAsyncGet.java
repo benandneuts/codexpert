@@ -70,7 +70,6 @@ public class HttpAsyncGet {
                         solutions[j] = Jsolutions.getInt(j);
                     }
                     String image  = o.getString("img");
-                    System.out.println("img "+ i +" : "+image);
                     questions.putIfAbsent(o.getInt("ID"), new Questions(quest, responses, solutions, image));
                 }
 

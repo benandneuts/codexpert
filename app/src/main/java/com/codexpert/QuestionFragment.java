@@ -60,11 +60,11 @@ public class QuestionFragment extends Fragment {
                 cb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(picked.contains(finalI)){
-                            picked.remove(finalI);
-                        }
-                        else {
+                        if(cb.isChecked()){
                             picked.add(finalI);
+                        }
+                        else{
+                            picked.remove(Integer.valueOf(finalI));
                         }
                     }
                 });

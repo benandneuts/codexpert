@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Debug;
 import android.text.InputType;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -50,10 +51,18 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = getIntent();
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide(); // Cette ligne cache la barre implémenté par défaut
 
-        rep = (HashMap<Integer, ArrayList<Integer>>) i.getParcelableExtra(String.valueOf(R.string.finalResp));
-        quest = (HashMap<Integer, Questions>) i.getParcelableExtra(String.valueOf(R.string.finalQuest));
+        setContentView(R.layout.activity_result);
+
+        Intent intent = getIntent();
+
+        rep = (HashMap<Integer, ArrayList<Integer>>) intent.getSerializableExtra(String.valueOf(R.string.finalResp));
+        System.out.println(rep);
+        quest = (HashMap<Integer, Questions>) intent.getSerializableExtra(String.valueOf(R.string.finalQuest));
+        System.out.println(quest);
         HashMap<Integer, ArrayList<Integer>> correction = new HashMap<Integer, ArrayList<Integer>>();
 
         for (Integer c : quest.keySet()) {
@@ -71,12 +80,6 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
                 res++;
             }
         }
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide(); // Cette ligne cache la barre implémenté par défaut
-
-        setContentView(R.layout.activity_result);
 
         TextView score = findViewById(R.id.score);
         TextView txtScore = findViewById(R.id.res_txt);
