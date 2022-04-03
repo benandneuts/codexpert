@@ -6,11 +6,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Debug;
 import android.text.InputType;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -25,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -172,8 +171,15 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         builder.setView(input);
 
         builder.setPositiveButton("OK", (dialog, which) -> {
-            setNumeroTel(input.getText().toString());
-            askPermissionAndSendSMS();
+            Pattern pattern = Pattern.compile("^(?:(?:\\+|00)33|0)\\s*[1-9](?:[\\s.-]*\\d{2}){4}$");
+            Matcher matcher = pattern.matcher(input.getText().toString());
+            if(matcher.find()) {
+                setNumeroTel(input.getText().toString());
+                askPermissionAndSendSMS();
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "Le numéro entré n'est pas valide", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
