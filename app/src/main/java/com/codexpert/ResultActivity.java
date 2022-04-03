@@ -24,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,21 +39,40 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     private Button share,detail_rep,suite;
 
     private int nbQuestion;
-    private int res;
+    private int res = 0;
     private String numeroTel = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.res = 10; //TODO -> Récup le res à la fin des question
-        this.nbQuestion = 40; //TODO
+        Intent i = getIntent();
+
+        HashMap<Integer, ArrayList<Integer>> rep = i.getParcelableExtra(String.valueOf(R.string.finalResp));
+        HashMap<Integer, Questions> quest = i.getParcelableExtra(String.valueOf(R.string.questF));
+        HashMap<Integer, ArrayList<Integer>> correction = new HashMap<Integer, ArrayList<Integer>>();
+
+        for (Integer c : quest.keySet()) {
+            ArrayList<Integer> tmplist = new ArrayList<>();
+            for (int solution : quest.get(c).solutions) {
+                tmplist.add(solution);
+            }
+            correction.put(c, tmplist);
+        }
+
+        nbQuestion = quest.size();
+
+        for (Integer c : rep.keySet()) {
+            if(rep.get(c).containsAll((Collection<?>) correction.get(c)) && correction.get(c).containsAll((Collection<?>) rep.get(c))) {
+                res++;
+            }
+        }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide(); // Cette ligne cache la barre implémenté par défaut
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_result);
 
         TextView score = findViewById(R.id.score);
         TextView txtScore = findViewById(R.id.res_txt);
@@ -83,7 +105,13 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // click events
         share.setOnClickListener(this);
         detail_rep.setOnClickListener(this);
-        suite.setOnClickListener(this);
+        suite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

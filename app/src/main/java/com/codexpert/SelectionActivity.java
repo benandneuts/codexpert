@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,7 +27,12 @@ public class SelectionActivity extends AppCompatActivity implements ThemeListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide(); // Cette ligne cache la barre implémenté par défaut
         setContentView(R.layout.activity_selection);
+
         ListTheme themeList = new ListTheme();
 
         selectionAdapter adapter = new selectionAdapter(this, themeList);

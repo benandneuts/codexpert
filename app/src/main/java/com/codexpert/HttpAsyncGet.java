@@ -69,8 +69,9 @@ public class HttpAsyncGet {
                     for (int j = 0; j<Jsolutions.length(); j++) {
                         solutions[j] = Jsolutions.getInt(j);
                     }
-
-                    questions.putIfAbsent(o.getInt("ID"), new Questions(quest, responses, solutions));
+                    String image  = o.getString("img");
+                    System.out.println("img "+ i +" : "+image);
+                    questions.putIfAbsent(o.getInt("ID"), new Questions(quest, responses, solutions, image));
                 }
 
             } catch (final JSONException e) {

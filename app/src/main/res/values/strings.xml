@@ -1,5 +1,10 @@
 <resources>
     <string name="questions">questions</string>
+    <string name="imageF">imageFragment</string>
+    <string name="questF">questionsFragment</string>
+    <string name="respsF">reponsesFragment</string>
+    <string name="finalResp">finalresponses</string>
+
     <string name="app_name">codexpert</string>
     <string name="share">Partager mon score</string>
     <string name="details">Détails de mes réponses</string>
