@@ -7,22 +7,21 @@ public class Theme {
     private String nom;
     private String desc;
     private String lienQ;
-    private boolean isAvaible;
+    private boolean isNotAvaible;
 
     public Theme(int i, String n, String d, String lien){
         image = i;
         nom = n;
         desc = d;
         lienQ = lien;
-        isAvaible = false;
     }
 
-    public Theme(int i, String n, String d, String lien, boolean isAvaible){
+    public Theme(int i, String n, String d, String lien, boolean isNotAvaible){
         image = i;
         nom = n;
         desc = d;
         lienQ = lien;
-        this.isAvaible = isAvaible;
+        this.isNotAvaible = isNotAvaible;
     }
 
     public int getImage(){
@@ -39,5 +38,9 @@ public class Theme {
 
     public String getLien() {
         return lienQ;
+    }
+
+    public boolean getIsNotAvaible() {
+        return isNotAvaible;
     }
 }

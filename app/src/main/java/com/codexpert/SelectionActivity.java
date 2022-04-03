@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -78,5 +79,11 @@ public class SelectionActivity extends AppCompatActivity implements ThemeListene
     @Override
     public void onClick(Theme item, int position) {
         executeInThread(item.getLien());
+    }
+
+    @Override
+    public void notAvaibleClick(Theme item, int position) {
+        Toast toast = Toast.makeText(getApplicationContext(), item.getNom()+" n'est pas disponible", Toast.LENGTH_LONG);
+        toast.show();
     }
 }

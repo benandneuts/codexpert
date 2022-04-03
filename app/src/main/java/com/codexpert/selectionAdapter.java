@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import androidx.core.content.ContextCompat;
+
 public class selectionAdapter extends BaseAdapter {
     private ListTheme listTheme;
     private Context mContext;
@@ -50,6 +52,10 @@ public class selectionAdapter extends BaseAdapter {
         tv_name.setText(listTheme.get(i).getNom());
         tv_image.setImageResource(listTheme.get(i).getImage());
 
+        if(listTheme.get(i).getIsNotAvaible()){
+            tv_name.setTextColor(ContextCompat.getColor(mContext, R.color.LightCoral));
+        }
+
         tv_name.setTag(i);
         tv_name.setOnClickListener(new View.OnClickListener() {
 
@@ -70,7 +76,12 @@ public class selectionAdapter extends BaseAdapter {
 
     private void sendListener(Theme item, int position) {
         for(int i = listThemeListener.size()-1; i >= 0; i--) {
-            listThemeListener.get(i).onClick(item, position);
+            if(item.getIsNotAvaible()) {
+                listThemeListener.get(i).notAvaibleClick(item, position);
+            }
+            else {
+                listThemeListener.get(i).onClick(item, position);
+            }
         }
     }
 }
