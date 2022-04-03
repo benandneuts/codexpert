@@ -109,7 +109,7 @@ public class EntrainementActivity extends AppCompatActivity implements QuestionF
                 else {
                     Intent i = new Intent(getApplicationContext(), ResultActivity.class);
                     i.putExtra(String.valueOf(R.string.finalResp), reponses);
-                    i.putExtra(String.valueOf(R.string.questF), questions);
+                    i.putExtra(String.valueOf(R.string.finalQuest), questions);
                     startActivity(i);
                 }
             }

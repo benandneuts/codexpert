@@ -49,7 +49,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         Intent i = getIntent();
 
         HashMap<Integer, ArrayList<Integer>> rep = i.getParcelableExtra(String.valueOf(R.string.finalResp));
-        HashMap<Integer, Questions> quest = i.getParcelableExtra(String.valueOf(R.string.questF));
+        HashMap<Integer, Questions> quest = i.getParcelableExtra(String.valueOf(R.string.finalQuest));
         HashMap<Integer, ArrayList<Integer>> correction = new HashMap<Integer, ArrayList<Integer>>();
 
         for (Integer c : quest.keySet()) {
