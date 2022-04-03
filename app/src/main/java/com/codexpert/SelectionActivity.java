@@ -83,7 +83,7 @@ public class SelectionActivity extends AppCompatActivity implements ThemeListene
 
     @Override
     public void notAvaibleClick(Theme item, int position) {
-        Toast toast = Toast.makeText(getApplicationContext(), item.getNom()+" n'est pas disponible", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), item.getNom()+" n'est pas disponible", Toast.LENGTH_SHORT);
         toast.show();
     }
 }

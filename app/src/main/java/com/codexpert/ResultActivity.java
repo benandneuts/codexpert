@@ -112,13 +112,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         // click events
         share.setOnClickListener(this);
         detail_rep.setOnClickListener(this);
-        suite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
+        suite.setOnClickListener(this);
     }
 
     @Override
@@ -127,8 +121,12 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             shareDialog(v);
         }
         else if(v == detail_rep) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Le détail n'est pas disponible", Toast.LENGTH_SHORT);
+            toast.show();
         }
         else if(v == suite) {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
         }
     }
 
@@ -272,4 +270,5 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
 }
