@@ -70,6 +70,7 @@ public class QuestionFragment extends Fragment {
                         picked.add(i);
                     }
                 });
+                ((LinearLayout)view.findViewById(R.id.layoutQuest)).addView(rg);
             }
             else {
                 for(int i = 0; i<reponses.size(); i++) {
