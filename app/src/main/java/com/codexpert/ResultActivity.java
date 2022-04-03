@@ -42,14 +42,18 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     private int res = 0;
     private String numeroTel = "";
 
+    private HashMap<Integer, ArrayList<Integer>> rep;
+    private HashMap<Integer, Questions> quest;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
 
-        HashMap<Integer, ArrayList<Integer>> rep = i.getParcelableExtra(String.valueOf(R.string.finalResp));
-        HashMap<Integer, Questions> quest = i.getParcelableExtra(String.valueOf(R.string.finalQuest));
+        rep = (HashMap<Integer, ArrayList<Integer>>) i.getParcelableExtra(String.valueOf(R.string.finalResp));
+        quest = (HashMap<Integer, Questions>) i.getParcelableExtra(String.valueOf(R.string.finalQuest));
         HashMap<Integer, ArrayList<Integer>> correction = new HashMap<Integer, ArrayList<Integer>>();
 
         for (Integer c : quest.keySet()) {

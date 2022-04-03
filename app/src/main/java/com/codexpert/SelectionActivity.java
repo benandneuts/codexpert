@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectionActivity extends AppCompatActivity implements ThemeListener {
     public ProgressDialog progressDialog;
-    public HashMap<Integer, List<Questions>> questions;
 
 
     @Override

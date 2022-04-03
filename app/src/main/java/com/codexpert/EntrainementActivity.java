@@ -52,8 +52,8 @@ public class EntrainementActivity extends AppCompatActivity implements QuestionF
         setContentView(R.layout.activity_entrainement);
         Intent intent = getIntent();
 
-
         questions = (HashMap<Integer, Questions>) intent.getSerializableExtra(String.valueOf(R.string.questions));
+
         reponses = new HashMap<Integer, ArrayList<Integer>>();
 
         fragmentManager = getSupportFragmentManager();
